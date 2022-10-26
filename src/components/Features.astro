@@ -20,10 +20,20 @@ const featuresData = [
 <section class="features">
   <div class="container">
     {featuresData.map(feature => (
-      <Card title={feature.title} body={feature.body} />
+      <Card dark={false} title={feature.title} body={feature.body} />
     ))}
   </div>
 </section>
+
+<!-- 
+  <section class="features">
+  <div class="container">
+    {featuresData.map(feature => (
+      <Card title={feature.title} body={feature.body} />
+    ))}
+  </div>
+</section> 
+-->
 
 
 <!-- 
