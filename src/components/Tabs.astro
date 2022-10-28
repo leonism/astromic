@@ -1,4 +1,6 @@
 ---
+// const activeTextColor = '#A741FF';
+
 export interface Props {
   activeTextColor?: string;
   headings: string[];
@@ -8,20 +10,44 @@ export interface Props {
 const { headings, contents, activeTextColor = '#A741FF' } = Astro.props as Props;
 ---
 
-<div class="tabs">
-  <ul class="tabs-header">
-   {headings.map(heading => (
+<!-- Tabs -->
+<div class='tabs'>
+  <ul class='tabs-header'>
+    <li class='default-tab'>NPM</li>
+    <li>PNPM</li>
+    <li>YARN</li> 
+   
+    <!-- I couldn't get this to work!, reverting back to manual work!
+    {headings.map(heading => (
       <li>{heading}</li>
-    ))} 
-  </ul>
-  <ul class="tabs-content">
-    {contents.map(content => (
-      <li class="tab">{content}</li>
     ))}
+    -->
+
+  </ul>
+
+  <ul class='tabs-content'>
+    
+    <li class='tab'>
+      <code>$ npm create astro@latest</code>
+    </li>
+    <li class='tab'>
+      <code>$ pnpm create astro@latest</code>
+    </li>
+    <li class='tab'>
+      <code>$ yarn create astro</code>
+    </li>
+
+    <!-- couldn't get to work neither with this one!
+      {contents.map(content => (
+      <li class="tab">{content}</li>
+    ))} 
+    -->
+
   </ul>
 </div>
 
 <style>
+  /* Tabs */
   .tabs {
     margin-top: 30px;
   }
@@ -47,6 +73,7 @@ const { headings, contents, activeTextColor = '#A741FF' } = Astro.props as Props
   }
 </style>
 
+
 <script define:vars={{activeTextColor}}>
   function createTabs(element) {
     const header = element.querySelector('.tabs-header');
@@ -63,6 +90,7 @@ const { headings, contents, activeTextColor = '#A741FF' } = Astro.props as Props
         tab_contents[current_tab_index].style.display = 'none';
       }
       tab_headers[index].style.fontWeight = 800;
+      // tab_headers[index].style.color = '#A741FF';
       tab_headers[index].style.color = activeTextColor;
       tab_contents[index].style.display = 'flex';
       current_tab_index = index;
@@ -81,3 +109,4 @@ const { headings, contents, activeTextColor = '#A741FF' } = Astro.props as Props
   [...document.querySelectorAll('.tabs')].forEach((x) => createTabs(x));
 
 </script>
+
