@@ -13,15 +13,17 @@ const { headings, contents, activeTextColor = '#A741FF' } = Astro.props as Props
 <!-- Tabs -->
 <div class='tabs'>
   <ul class='tabs-header'>
+    
+    <!-- 
     <li class='default-tab'>NPM</li>
     <li>PNPM</li>
     <li>YARN</li> 
-   
-    <!-- I couldn't get this to work!, reverting back to manual work!
+    -->
+    
     {headings.map(heading => (
       <li>{heading}</li>
     ))}
-    -->
+   
 
   </ul>
 
